@@ -1,0 +1,1 @@
+<img src="{{ $category->image_path }}" width="70">

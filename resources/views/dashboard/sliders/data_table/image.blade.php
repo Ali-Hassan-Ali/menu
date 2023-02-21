@@ -1,0 +1,1 @@
+<img src="{{ $slider->image_path }}" width="70">
