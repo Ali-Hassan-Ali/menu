@@ -52,4 +52,11 @@ class User extends Authenticatable
         return asset('admin_assets/images/default.png');
 
     }// end of getImagePathAttribute
+
+
+    public function hasImage()
+    {
+        return $this->image != null;
+
+    }// end of hasImage
 }
