@@ -38,10 +38,11 @@
 
                 {{--settings--}}
         
-        <li class="treeview {{ request()->is('*settings*') ? 'is-expanded' : '' }}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">@lang('dashboard.settings')</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview {{ request()->is('*settings*') ? 'is-expanded' : '' }}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">@lang('settings.settings')</span><i class="treeview-indicator fa fa-angle-right"></i></a>
 
             <ul class="treeview-menu">
-                <li><a class="treeview-item" href="{{ route('dashboard.settings.index') }}"><i class="icon fa fa-circle-o"></i>@lang('settings.general')</a></li>
+                <li><a class="treeview-item" href="{{ route('dashboard.settings.index') }}">
+                    <i class="icon fa fa-circle-o"></i>@lang('settings.general')</a></li>
             </ul>
         </li>
 
