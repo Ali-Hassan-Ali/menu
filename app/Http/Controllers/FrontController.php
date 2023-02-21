@@ -11,8 +11,8 @@ class FrontController extends Controller
     public function index()
     {
         $sliders   = Slider::all();
-        $products  = Product::all();
-        $categorys = Category::all();
+        $products  = Product::active()->latest()->get();
+        $categorys = Category::active()->latest()->get();
 
         return view('front.index', compact('sliders', 'products', 'categorys'));
 

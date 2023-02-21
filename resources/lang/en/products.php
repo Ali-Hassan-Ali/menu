@@ -11,4 +11,5 @@ return [
     'image'      => 'image',
     'price'      => 'price',
     'status'     => 'status',
+    'add_items'  => 'Add Items',
 ];

@@ -9,7 +9,7 @@
 
                 <li class="nav-item col-3">
                   <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-{{ $product->id }}">
-                    <div class="img img1">
+                    <div class="img img{{ $product->category_id }}">
                       <h4 class="mb-2">{{ $product->name }}</h4>
                     </div>
                   </a>
@@ -23,25 +23,28 @@
 
               @foreach($products as $product)
 
-              <div class="tab-pane {{ $lopp->first ? 'active show' : '' }}" id="tab-{{ $product->id }}">
+              <div class="tab-pane {{ $loop->first ? 'active show' : '' }}" id="tab-{{ $product->id }}">
                 <div class="row">
                   <div class="col-6  mt-3 mt-lg-0 d-flex flex-column justify-content-center" data-aos="fade-up"
                     data-aos-delay="100">
                     <div class="d-flex justify-content-between">
                       <p class="fst-italic">
-                        {{ $product->price }} ريال
+                        {{ $product->price }}
+                        {{ trans('front.rial') }}
                       </p>
-                      <h3>فول سوداني</h3>
+                      <h3>{{ $product->name }}</h3>
                     </div>
-                    <p class="mb-1 pb-1">المكونات</p>
-                    <ul>
-                      <li> حمص <i class="bi bi-check2-all"></i></li>
-                      <li></i>لحمة مفرومة<i class="bi bi-check2-all"></i>
-                      </li>
-                      <li> زيت زيتتون
-                        <i class="bi bi-check2-all"></i>
-                      </li>
-                    </ul>
+                    <p class="mb-1 pb-1">{{ trans('front.components') }}</p>
+                    @if($product->items)
+                    @foreach($product->items as $item)
+                      <ul>
+                        <li>
+                          {{ $item->name }}
+                          <i class="bi bi-check2-all"></i>
+                        </li>
+                      </ul>
+                      @endforeach
+                    @endif
                   </div>
                   <div class="col-6 text-center" data-aos="fade-up" data-aos-delay="200">
                     <img src="{{ $product->image_path }}" alt="" class="img-fluid">

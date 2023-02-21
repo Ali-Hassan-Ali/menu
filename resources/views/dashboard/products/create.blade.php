@@ -62,8 +62,8 @@
                         <div class="form-group col-12 col-md-6">
                             <label>@lang('products.price') <span class="text-danger">*</span></label>
                             <div class="input-group mb-2">
-                                <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
-                                @error('price')
+                                <input type="number" name="myp" class="form-control @error('myp') is-invalid @enderror" value="{{ old('myp') }}">
+                                @error('myp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -92,14 +92,77 @@
                         </div>
 
                         {{--status--}}
-                        <div class="form-group col-12 col-md-6">
+                        <div class="form-group col-12 col-md-6 mb-5">
                             <div class="form-switch">
-                              <input class="form-check-input" type="checkbox" name="status" value="{{ old('status', 1) }}" {{ old('status', 1) ? 'checked' : '' }}>
                               <label class="form-check-label">@lang('products.status')</label>
+                              <input class="form-check-input" type="checkbox" name="status" value="{{ old('status', 1) }}" {{ old('status', 1) ? 'checked' : '' }}>
                             </div>
                         </div>
 
                     </div>{{-- row --}}
+
+                    <h3>
+                        <a class="btn btn-primary" id="add-item" data-index="1">
+                            <i class="fa fa-plus text-light"></i>
+                        </a>
+                        @lang('products.add_items')
+                    </h3>
+                    <hr/>
+
+                    {{-- request part --}}
+                    <div class="table-responsive">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">@lang('products.name_en')<span class="text-danger">*</span></th>
+                                    <th scope="col">@lang('products.name_ar')<span class="text-danger">*</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="append-item">
+                                @if(old('item_name_en'))
+                                    @foreach(old('item_name_en') as $index=>$item)
+                                    <tr>
+                                        <th scope="row">
+                                            <button class="btn btn-danger remove-item" data-eir-no="">
+                                                <i class="fa fa-remove"></i>
+                                            </button>
+                                        </th>
+                                        <td>
+                                            <input type="text" name="item_name_en[]" value="{{ old('item_name_en')[$index] }}" 
+                                            class="form-control" required autofocus placeholder="{{ trans('products.name_en') }}">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="item_name_ar[]" value="{{ old('item_name_ar')[$index] }}"
+                                            class="form-control" required autofocus placeholder="{{ trans('products.name_ar') }}">
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @else
+
+                                    <tr>
+                                        <th scope="row">
+                                            <button class="btn btn-danger remove-item" data-eir-no="">
+                                                <i class="fa fa-remove"></i>
+                                            </button>
+                                        </th>
+                                        <td>
+                                            <input type="text" name="item_name_en[]" 
+                                            class="form-control" required autofocus placeholder="{{ trans('products.name_en') }}">
+                                        </td>
+                                        <td>
+                                            <input type="text" name="item_name_ar[]" 
+                                            class="form-control" required autofocus placeholder="{{ trans('products.name_ar') }}">
+                                        </td>
+                                    </tr>
+
+                                @endif
+                            </tbody>
+
+                        </table>
+                        
+                    </div>{{-- table-responsive --}}
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
@@ -116,3 +179,7 @@
     </div><!-- end of row -->
 
 @endsection
+
+@push('scripts')
+    @include('dashboard.products.script')
+@endpush

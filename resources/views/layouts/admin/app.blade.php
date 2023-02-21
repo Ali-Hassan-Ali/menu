@@ -44,6 +44,9 @@
             .breadcrumb-item+.breadcrumb-item::before {
                 float: revert;
             }
+            .form-switch .form-check-input {
+                margin-right: 2.5em;
+            }
         </style>
     @endif
 

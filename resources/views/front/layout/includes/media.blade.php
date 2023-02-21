@@ -7,10 +7,10 @@
             <img src="assets/img/cafi-logo.png" height="70px" alt="">
 
             <div class="social-links d-flex justify-content-center mt-3">
-              <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-tiktok"></i></a>
+              <a href="{{ setting('twitter') }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
+              <a href="{{ setting('facebook') }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
+              <a href="{{ setting('instagram') }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+              <a href="{{ setting('tiktok') }}" class="d-flex align-items-center justify-content-center"><i class="bi bi-tiktok"></i></a>
             </div>
           </div>
         </div>

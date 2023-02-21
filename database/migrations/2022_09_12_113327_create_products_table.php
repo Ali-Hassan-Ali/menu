@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->text('name');
             $table->string('image')->nullable();
-            $table->string('price')->nullable();
+            $table->bigInteger('price')->nullable();
+            $table->string('myp')->nullable();
             $table->text('description')->nullable();
             $table->boolean('status')->default(1);
             $table->foreignIdFor(\App\Models\Category::class)->onDelete('cascade');

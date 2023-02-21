@@ -5,7 +5,7 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
-class ChechOldPassword implements Rule
+class CheckOldPassword implements Rule
 {
     /**
      * Create a new rule instance.
@@ -26,9 +26,7 @@ class ChechOldPassword implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
-        return
-        Hash::check($value, auth()->user()->password);
+        return Hash::check($value, auth()->user()->password);
 
     }
 

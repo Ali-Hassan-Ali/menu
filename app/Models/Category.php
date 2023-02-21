@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Category extends Model
 {
@@ -16,7 +17,11 @@ class Category extends Model
 
     public function getImagePathAttribute()
     {
-        return asset('storage/' . $this->image);
+        if($this->image) {
+            return asset('storage/' . $this->image);
+        } else {
+            return asset('assets/default.png');
+        }
         
     }//end of fun
 
@@ -32,6 +37,12 @@ class Category extends Model
     {
         return $this->hasMany(Product::class,'category_id', 'id');
 
+    }//end of fun
+
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('status', 1);
+        
     }//end of fun
 
 }//end of model

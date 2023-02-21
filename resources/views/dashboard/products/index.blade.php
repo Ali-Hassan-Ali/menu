@@ -109,7 +109,7 @@
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'name', name: 'name'},
                 {data: 'image', name: 'image'},
-                {data: 'price', name: 'price'},
+                {data: 'myp', name: 'myp'},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],
             order: [[2, 'desc']],

@@ -9,6 +9,8 @@ use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\SettingController;
+use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Dashboard\PasswordController;
 
 Route::middleware('SetLocale')
     ->group(function () {
@@ -36,12 +38,25 @@ Route::middleware('SetLocale')
                 Route::delete('categorys/bulk_delete', [CategoryController::class, 'bulkDelete'])->name('categorys.bulk_delete');
                 Route::resource('categorys', CategoryController::class)->except('show');
 
-                Route::prefix('setting')->name('setting.')->group(function () {
+                Route::prefix('settings')->name('settings.')->group(function () {
 
                         Route::get('/', [SettingController::class, 'index'])->name('index');
                         Route::post('store', [SettingController::class,'store'])->name('store');
 
                 });//group function
+
+                //profile routes
+                Route::get('/profile/edit', [ProfileController::class,'edit'])->name('profile.edit');
+                Route::put('/profile/update', [ProfileController::class,'update'])->name('profile.update');
+
+                Route::name('profile.')->namespace('Profile')->group(function () {
+
+                    //password routes
+                    Route::get('/password/edit',  [PasswordController::class,'edit'])->name('password.edit');
+                    Route::put('/password/update', [PasswordController::class,'update'])->name('password.update');
+
+                });
+
 
         });//group middleware
         

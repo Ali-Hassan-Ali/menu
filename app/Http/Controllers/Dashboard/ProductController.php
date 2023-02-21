@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductItem;
 use App\Models\Category;
 use App\Http\Requests\ProductRequest;
 use Yajra\DataTables\DataTables;
@@ -50,14 +51,17 @@ class ProductController extends Controller
     
     public function store(ProductRequest $request)
     {
-        $requestData                = $request->safe()->except('name_ar','name_en', 'description_en', 'description_ar');
+        $requestData                = $request->safe()->except('name_ar','name_en', 'description_en', 'description_ar','item_name_ar','sitem_name_en');
         $requestData['name']        = ['ar' => $request->name_ar, 'en' => $request->name_en];
         $requestData['description'] = ['ar' => $request->description_ar, 'en' => $request->description_en];
+        
         if ($request->image) {
             $requestData['image']   = $request->file('image')->store('products', 'public');
         }
 
-        Product::create($requestData);
+        $product = Product::create($requestData);
+
+        $this->storeItem($request, $product);
 
         session()->flash('success', __('dashboard.added_successfully'));
         return redirect()->route('dashboard.products.index');
@@ -77,13 +81,16 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
-        $requestData                = $request->safe()->except('name_ar','name_en', 'description_en', 'description_ar');
+        $requestData                = $request->safe()->except('name_ar','name_en', 'description_en', 'description_ar','item_name_ar','sitem_name_en');
         $requestData['name']        = ['ar' => $request->name_ar, 'en' => $request->name_en];
         $requestData['description'] = ['ar' => $request->description_ar, 'en' => $request->description_en];
         if ($request->image) {
             $requestData['image']   = $request->file('image')->store('products', 'public');
         }
+        
         $product->update($requestData);
+
+        $this->storeItem($request, $product, 'update');
 
         session()->flash('success', __('dashboard.updated_successfully'));
         return redirect()->route('dashboard.products.index');
@@ -118,5 +125,27 @@ class ProductController extends Controller
         $product->delete();
 
     }// end of delete
+
+    private function storeItem($request, $product, $update = false)
+    {
+        if($request->item_name_en) {
+
+            if($update) {
+                $product->items()->delete();
+            }
+
+            foreach($request->item_name_en as $index=>$item) {
+               
+                $name = ['ar' => $request->item_name_ar[$index], 'en' => $request->item_name_en[$index]];
+                
+                ProductItem::create([
+                    'name'       => $name,
+                    'product_id' => $product->id,
+                ]);
+            }
+
+        }//emd of check
+
+    }//end of storeItem
 
 }//end of controller

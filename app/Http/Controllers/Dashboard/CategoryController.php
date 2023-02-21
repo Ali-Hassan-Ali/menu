@@ -52,7 +52,9 @@ class CategoryController extends Controller
     {
         $requestData           = $request->safe()->except('name_ar','name_en');
         $requestData['name']   = ['ar' => $request->name_ar, 'en' => $request->name_en];
-        $requestData['image']  = $request->file('image')->store('categorys', 'public');
+        if($request->image) {
+            $requestData['image']  = $request->file('image')->store('categorys', 'public');
+        }
 
         Category::create($requestData);
 
