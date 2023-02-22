@@ -23,16 +23,16 @@ class SettingController extends Controller
 
         $requestData = $request->except(['_token', '_method']);
 
-        if ($request->logo) {
-            Storage::disk('local')->delete('public/uploads/' . setting('logo'));
-            $request->logo->store('public/uploads');
-            $requestData['logo'] = $request->logo->hashName();
+        if ($request->logo_one) {
+            Storage::disk('local')->delete('public/uploads/' . setting('logo_one'));
+            $request->logo_one->store('public/uploads');
+            $requestData['logo_one'] = $request->logo_one->hashName();
         }
 
-        if ($request->fav_icon) {
-            Storage::disk('local')->delete('public/uploads/' . setting('fav_icon'));
-            $request->fav_icon->store('public/uploads');
-            $requestData['fav_icon'] = $request->fav_icon->hashName();
+        if ($request->logo_tow) {
+            Storage::disk('local')->delete('public/uploads/' . setting('logo_tow'));
+            $request->logo_tow->store('public/uploads');
+            $requestData['logo_tow'] = $request->logo_tow->hashName();
         }
 
         setting($requestData)->save();

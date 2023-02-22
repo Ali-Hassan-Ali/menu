@@ -7,5 +7,7 @@ return [
     'general'             => ' العامة',
     'logo'                => 'شعار',
     'title'               => 'عنوان',
+    'logo_one'            => 'logo one',
+    'logo_tow'            => 'logo tow',
 
 ];

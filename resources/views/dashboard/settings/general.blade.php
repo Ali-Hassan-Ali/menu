@@ -21,19 +21,19 @@
                     @csrf
                     @method('post')
 
-                    {{--logo--}}
-                   {{--  <div class="form-group">
-                        <label>@lang('settings.logo')</label>
-                        <input type="file" name="logo" class="form-control load-image">
-                        <img src="{{ Storage::url('uploads/' . setting('logo')) }}" class="loaded-image" alt="" style="display: {{ setting('logo') ? 'block' : 'none' }}; width: 100px; margin: 10px 0;">
-                    </div> --}}
+                    {{--logo_one--}}
+                    <div class="form-group">
+                        <label>@lang('settings.logo_one')</label>
+                        <input type="file" name="logo_one" class="form-control load-image">
+                        <img src="{{ Storage::url('uploads/' . setting('logo_one')) }}" class="loaded-image" alt="" style="display: {{ setting('logo_one') ? 'block' : 'none' }}; width: 100px; margin: 10px 0;">
+                    </div>
 
-                    {{--fav_icon--}}
-                    {{-- <div class="form-group">
-                        <label>@lang('settings.fav_icon')</label>
-                        <input type="file" name="fav_icon" class="form-control load-image">
-                        <img src="{{ Storage::url('uploads/' . setting('fav_icon')) }}" class="loaded-image" alt="" style="display: {{ setting('fav_icon') ? 'block' : 'none' }}; width: 50px; margin: 10px 0;">
-                    </div> --}}
+                    {{--logo_tow--}}
+                    <div class="form-group">
+                        <label>@lang('settings.logo_tow')</label>
+                        <input type="file" name="logo_tow" class="form-control load-image">
+                        <img src="{{ Storage::url('uploads/' . setting('logo_tow')) }}" class="loaded-image" alt="" style="display: {{ setting('logo_tow') ? 'block' : 'none' }}; width: 50px; margin: 10px 0;">
+                    </div>
 
                     {{--title--}}
                     <div class="form-group">
