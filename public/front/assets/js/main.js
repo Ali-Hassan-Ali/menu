@@ -219,39 +219,39 @@ document.addEventListener('DOMContentLoaded', () => {
     aos_init();
   });
 
-let img1 =  document.getElementById('img1');
-let img2 =  document.getElementById('img2');
-let img3 =  document.getElementById('img3');
- let products =  document.getElementById('products');
- let contact =  document.getElementById('contact');
- let sec =  document.getElementById('sec');
+// let img1 =  document.getElementById('img1');
+// let img2 =  document.getElementById('img2');
+// let img3 =  document.getElementById('img3');
+// let products =  document.getElementById('products');
+// let contact =  document.getElementById('contact');
+// let sec =  document.getElementById('sec');
 
- img1.addEventListener('click', function () {
-  if (products.classList.contains('d-none')) {
-     products.classList.remove('d-none');
-     products.classList.add('d-block');
-     contact.classList.add('d-none');
-     sec.classList.add('d-none');
+//  img1.addEventListener('click', function () {
+//   if (products.classList.contains('d-none')) {
+//      products.classList.remove('d-none');
+//      products.classList.add('d-block');
+//      contact.classList.add('d-none');
+//      sec.classList.add('d-none');
 
-  } 
-})
-img2.addEventListener('click', function () {
-  if (products.classList.contains('d-none')) {
-     products.classList.remove('d-none');
-     products.classList.add('d-block');
-     contact.classList.add('d-none');
-     sec.classList.add('d-none');
+//   } 
+// })
+// img2.addEventListener('click', function () {
+//   if (products.classList.contains('d-none')) {
+//      products.classList.remove('d-none');
+//      products.classList.add('d-block');
+//      contact.classList.add('d-none');
+//      sec.classList.add('d-none');
     
-  } 
-})
-img3.addEventListener('click', function () {
-  if (products.classList.contains('d-none')) {
-     products.classList.remove('d-none');
-     products.classList.add('d-block');
-     contact.classList.add('d-none');
-     sec.classList.add('d-none');
+//   } 
+// })
+// img3.addEventListener('click', function () {
+//   if (products.classList.contains('d-none')) {
+//      products.classList.remove('d-none');
+//      products.classList.add('d-block');
+//      contact.classList.add('d-none');
+//      sec.classList.add('d-none');
      
-  } 
-})
+//   } 
+// })
 
 });

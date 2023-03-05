@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasTranslations;
 
-    protected $fillable     = ['name', 'image', 'status'];
+    protected $fillable     = ['name', 'image', 'parent_id', 'status'];
     protected $translatable = ['name'];
 
     protected $appends  = ['image_path'];
@@ -36,6 +36,12 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany(Product::class,'category_id', 'id');
+
+    }//end of fun
+
+    public function parents()
+    {
+        return $this->hasMany(Category::class, 'parent_id', 'id');
 
     }//end of fun
 

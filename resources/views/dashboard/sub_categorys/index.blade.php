@@ -3,12 +3,12 @@
 @section('content')
 
     <div>
-        <h2>@lang('products.products')</h2>
+        <h2>@lang('categorys.sub_categorys')</h2>
     </div>
 
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('dashboard.home') }}">@lang('dashboard.home')</a></li>
-        <li class="breadcrumb-item">@lang('products.products')</li>
+        <li class="breadcrumb-item">@lang('categorys.sub_categorys')</li>
     </ul>
 
     <div class="row">
@@ -21,11 +21,11 @@
 
                     <div class="col-md-12">
 
-                        <a href="{{ route('dashboard.products.create') }}" class="btn btn-primary">
+                        <a href="{{ route('dashboard.sub_categorys.create') }}" class="btn btn-primary">
                             <i class="fa fa-plus"></i> @lang('dashboard.create')
                         </a>
 
-                        <form method="post" action="{{ route('dashboard.products.bulk_delete') }}" style="display: inline-block;">
+                        <form method="post" action="{{ route('dashboard.sub_categorys.bulk_delete') }}" style="display: inline-block;">
                             @csrf
                             @method('delete')
                             <input type="hidden" name="record_ids" id="record-ids">
@@ -66,9 +66,9 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th>@lang('products.name')</th>
-                                    <th>@lang('products.image')</th>
-                                    <th>@lang('products.price')</th>
+                                    <th>@lang('categorys.name')</th>
+                                    <th>@lang('categorys.count_product')</th>
+                                    <th>@lang('categorys.image')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
                                 </thead>
@@ -103,13 +103,13 @@
                 "url": "{{ asset('admin_assets/datatable-lang/' . app()->getLocale() . '.json') }}"
             },
             ajax: {
-                url: '{{ route('dashboard.products.data') }}',
+                url: '{{ route('dashboard.sub_categorys.data') }}',
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'name', name: 'name'},
+                {data: 'count_product', name: 'count_product'},
                 {data: 'image', name: 'image'},
-                {data: 'price', name: 'price'},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],
             order: [[2, 'desc']],

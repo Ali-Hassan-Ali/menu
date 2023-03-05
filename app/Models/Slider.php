@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Slider extends Model
 {
@@ -16,6 +17,12 @@ class Slider extends Model
     public function getImagePathAttribute()
     {
         return asset('storage/' . $this->image);
+        
+    }//end of fun
+
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('status', 1);
         
     }//end of fun
 

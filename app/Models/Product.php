@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasTranslations;
 
-    protected $fillable     = ['name', 'image',' myp', 'status', 'description', 'category_id'];
+    protected $fillable     = ['name', 'image','price', 'status', 'description', 'category_id'];
     protected $translatable = ['name', 'description'];
 
     protected $appends = ['image_path'];

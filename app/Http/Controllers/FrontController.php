@@ -10,11 +10,12 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $sliders   = Slider::all();
-        $products  = Product::active()->latest()->get();
-        $categorys = Category::active()->latest()->get();
+        $sliders      = Slider::active()->get();
+        $products     = Product::active()->latest()->get();
+        $categorys    = Category::where('parent_id', 0)->active()->get();
+        $subCategorys = Category::where('parent_id', '>', 0)->active()->get();
 
-        return view('front.index', compact('sliders', 'products', 'categorys'));
+        return view('front.index', compact('sliders', 'products', 'categorys', 'subCategorys'));
 
     }//end of fun
 

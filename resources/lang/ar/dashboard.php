@@ -6,6 +6,7 @@ return [
     'sliders'         => 'السلايدر',
     'products'        => 'المنتجات',
     'categorys'       => 'الاقسام',
+    'sub_categorys'   => 'القسام الفرعية',
 
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',

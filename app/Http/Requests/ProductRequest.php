@@ -27,7 +27,7 @@ class ProductRequest extends FormRequest
             'category_id'     => ['required','exists:categories,id'],
             'status'          => ['required','in:1,0'],
             'image'           => ['nullable','image'],
-            'myp'             => ['required','numeric'],
+            'price'           => ['required','numeric'],
             'item_name_ar'    => ['nullable'],
             'item_name_en'    => ['nullable'],
             'name_ar'         => ['required','string','min:2','max:255'],

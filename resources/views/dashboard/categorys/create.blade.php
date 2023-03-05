@@ -55,7 +55,7 @@
                         <div class="form-group col-12 col-md-6 mb-5">
                             <label>@lang('products.status') <span class="text-danger">*</span></label>
                             <div class="form-switch">
-                              <input class="form-check-input" type="checkbox" name="status" value="{{ old('status', 1) }}" {{ old('status', 1) ? 'checked' : '' }}>
+                              <input class="form-check-input" type="checkbox" name="status" value="1" {{ old('status', 1) ? 'checked' : '' }}>
                             </div>
                         </div>
 

@@ -26,7 +26,7 @@ class PasswordController extends Controller
         auth()->user()->update($request->all());
 
         session()->flash('success', __('site.updated_successfully'));
-        return redirect()->route('admin.home');
+        return redirect()->back();
 
     }// end of postChangePassword
 

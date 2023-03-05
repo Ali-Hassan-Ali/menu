@@ -13,26 +13,32 @@
     <ul class="app-menu">
 
         <li>
-            <a class="app-menu__item {{ request()->is('*dashboard*') ? 'active' : '' }}" href="{{ route('dashboard.home') }}">
+            <a class="app-menu__item {{ request()->routeIs('dashboard.home') ? 'active' : '' }}" href="{{ route('dashboard.home') }}">
                 <i class="app-menu__icon fa fa-home"></i> <span class="app-menu__label">@lang('dashboard.home')</span>
             </a>
         </li>
 
         <li>
-            <a class="app-menu__item {{ request()->is('*sliders*') ? 'active' : '' }}" href="{{ route('dashboard.sliders.index') }}">
+            <a class="app-menu__item {{ request()->routeIs('dashboard.sliders.*') ? 'active' : '' }}" href="{{ route('dashboard.sliders.index') }}">
                 <i class="app-menu__icon fa fa-sliders"></i> <span class="app-menu__label">@lang('dashboard.sliders')</span>
             </a>
         </li>
 
         <li>
-            <a class="app-menu__item {{ request()->is('*products*') ? 'active' : '' }}" href="{{ route('dashboard.products.index') }}">
+            <a class="app-menu__item {{ request()->routeIs('dashboard.products.*') ? 'active' : '' }}" href="{{ route('dashboard.products.index') }}">
                 <i class="app-menu__icon fa fa-sliders"></i> <span class="app-menu__label">@lang('dashboard.products')</span>
             </a>
         </li>
 
         <li>
-            <a class="app-menu__item {{ request()->is('*categorys*') ? 'active' : '' }}" href="{{ route('dashboard.categorys.index') }}">
+            <a class="app-menu__item {{ request()->routeIs('dashboard.categorys.*') ? 'active' : '' }}" href="{{ route('dashboard.categorys.index') }}">
                 <i class="app-menu__icon fa fa-list-alt"></i> <span class="app-menu__label">@lang('dashboard.categorys')</span>
+            </a>
+        </li>
+
+        <li>
+            <a class="app-menu__item {{ request()->routeIs('dashboard.sub_categorys.*') ? 'active' : '' }}" href="{{ route('dashboard.sub_categorys.index') }}">
+                <i class="app-menu__icon fa fa-list-alt"></i> <span class="app-menu__label">@lang('dashboard.sub_categorys')</span>
             </a>
         </li>
 

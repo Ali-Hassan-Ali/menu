@@ -42,7 +42,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categorys = Category::all();
+        $categorys = Category::where('parent_id', '>', 0)->get();
 
         return view('dashboard.products.create', compact('categorys'));
 
@@ -58,7 +58,6 @@ class ProductController extends Controller
         if ($request->image) {
             $requestData['image']   = $request->file('image')->store('products', 'public');
         }
-
         $product = Product::create($requestData);
 
         $this->storeItem($request, $product);
@@ -72,7 +71,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $categorys = Category::all();
+        $categorys = Category::where('parent_id', '>', 0)->get();
 
         return view('dashboard.products.edit', compact('product', 'categorys'));
 

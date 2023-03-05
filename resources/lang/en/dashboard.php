@@ -6,6 +6,7 @@ return [
     'sliders'         => 'Sliders',
     'products'        => 'Products',
     'categorys'       => 'Categorys',
+    'sub_categorys'   => 'sub Categorys',
 
     'logout' => 'Logout',
     'login'  => 'Login',

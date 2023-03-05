@@ -25,6 +25,7 @@ class CategoryRequest extends FormRequest
     {
         $rules = [
             'status'   => ['required','in:1,0'],
+            'parent_id'=> ['nullable','numeric'],
             'image'    => ['nullable','image'],
             'name_ar'  => ['required','string','min:2','max:255'],
             'name_en'  => ['required','string','min:2','max:255'],

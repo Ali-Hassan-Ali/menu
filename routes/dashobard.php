@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\WelcomController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\SubCategoryController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\PasswordController;
@@ -37,6 +38,11 @@ Route::middleware('SetLocale')
                 Route::get('categorys/data', [CategoryController::class, 'data'])->name('categorys.data');
                 Route::delete('categorys/bulk_delete', [CategoryController::class, 'bulkDelete'])->name('categorys.bulk_delete');
                 Route::resource('categorys', CategoryController::class)->except('show');
+
+                //sub_categorys routes
+                Route::get('sub_categorys/data', [SubCategoryController::class, 'data'])->name('sub_categorys.data');
+                Route::delete('sub_categorys/bulk_delete', [SubCategoryController::class, 'bulkDelete'])->name('sub_categorys.bulk_delete');
+                Route::resource('sub_categorys', SubCategoryController::class)->except('show');
 
                 Route::prefix('settings')->name('settings.')->group(function () {
 

@@ -58,12 +58,12 @@
 
                         @endforeach
 
-                                                {{--cost--}}
+                        {{--price--}}
                         <div class="form-group col-12 col-md-6">
                             <label>@lang('products.price') <span class="text-danger">*</span></label>
                             <div class="input-group mb-2">
-                                <input type="number" name="myp" class="form-control @error('myp') is-invalid @enderror" value="{{ old('myp') }}">
-                                @error('myp')
+                                <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
+                                @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -95,7 +95,7 @@
                         <div class="form-group col-12 col-md-6 mb-5">
                             <div class="form-switch">
                               <label class="form-check-label">@lang('products.status')</label>
-                              <input class="form-check-input" type="checkbox" name="status" value="{{ old('status', 1) }}" {{ old('status', 1) ? 'checked' : '' }}>
+                              <input class="form-check-input" type="checkbox" name="status" value="1" {{ old('status', 1) ? 'checked' : '' }}>
                             </div>
                         </div>
 

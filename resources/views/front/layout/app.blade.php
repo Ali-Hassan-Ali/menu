@@ -36,8 +36,9 @@
 
 	@yield('content')
 
-    @include('front.layout.includes.footer')
+  @include('front.layout.includes.footer')
   <!-- Vendor JS Files -->
+  <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('front/assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ asset('front/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
@@ -47,6 +48,33 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('front/assets/js/main.js') }}"></script>
+
+  <script type="text/javascript">
+
+    $(document).on('click', '.category', function(e) {
+      e.preventDefault();
+         let id = $(this).data('id');
+         $('.subCategory').addClass('d-none');
+          $('.product').addClass('d-none');
+         $('.subCategory-' + id).each(function(index) {
+              $(this).removeClass('d-none');
+          });
+
+    });
+
+    $(document).on('click', '.subCategory', function(e) {
+      e.preventDefault();
+
+         let id = $(this).data('id');
+         $('.product').addClass('d-none');
+
+         $('.product-' + id).each(function(index) {
+            $(this).removeClass('d-none');
+        });
+
+    });
+
+  </script>
 
 </body>
 

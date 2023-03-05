@@ -8,20 +8,20 @@ use App\Http\Requests\CategoryRequest;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class SubCategoryController extends Controller
 {
     public function index()
     {
-        return view('dashboard.categorys.index');
+        return view('dashboard.sub_categorys.index');
 
     }//end of index 
 
     public function data()
     {
-        $category = Category::where('parent_id', 0)->get();
+        $category = Category::where('parent_id', '>', 0)->get();
 
         return DataTables::of($category)
-            ->addColumn('record_select', 'dashboard.categorys.data_table.record_select')
+            ->addColumn('record_select', 'dashboard.sub_categorys.data_table.record_select')
             ->editColumn('created_at', function (Category $category) {
                 return $category->created_at->format('Y-m-d');
             })
@@ -29,12 +29,12 @@ class CategoryController extends Controller
                 return $category->products->count();
             })
             ->addColumn('image', function (Category $category) {
-                return view('dashboard.categorys.data_table.image', compact('category'));
+                return view('dashboard.sub_categorys.data_table.image', compact('category'));
             })
             ->addColumn('name', function (Category $category) {
                 return $category->name;
             })
-            ->addColumn('actions', 'dashboard.categorys.data_table.actions')
+            ->addColumn('actions', 'dashboard.sub_categorys.data_table.actions')
             ->rawColumns(['record_select', 'actions','name'])
             ->toJson();
 
@@ -43,7 +43,9 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('dashboard.categorys.create');
+        $categorys = Category::where('parent_id', 0)->get();
+
+        return view('dashboard.sub_categorys.create', compact('categorys'));
 
     }//end of create
 
@@ -59,37 +61,39 @@ class CategoryController extends Controller
         Category::create($requestData);
 
         session()->flash('success', __('dashboard.added_successfully'));
-        return redirect()->route('dashboard.categorys.index');
+        return redirect()->route('dashboard.sub_categorys.index');
 
     }//end of store
 
 
 
-    public function edit(Category $category)
+    public function edit(Category $subCategory)
     {
-        return view('dashboard.categorys.edit', compact('category'));
+        $categorys = Category::where('parent_id', 0)->get();
+
+        return view('dashboard.sub_categorys.edit', compact('subCategory', 'categorys'));
 
     }//end of edit
 
 
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request, Category $subCategory)
     {
         $requestData           = $request->safe()->except('name_ar','name_en');
         $requestData['name']   = ['ar' => $request->name_ar, 'en' => $request->name_en];
         if($request->image) {
             $requestData['image']  = $request->file('image')->store('categorys', 'public');
         }
-        $category->update($requestData);
+        $subCategory->update($requestData);
 
         session()->flash('success', __('dashboard.updated_successfully'));
-        return redirect()->route('dashboard.categorys.index');
+        return redirect()->route('dashboard.sub_categorys.index');
 
     }//end of store
 
    
-    public function destroy(Category $category)
+    public function destroy(Category $subCategory)
     {
-        $this->delete($category);
+        $this->delete($subCategory);
         session()->flash('success', __('dashboard.deleted_successfully'));
         return response(__('dashboard.deleted_successfully'));
 
@@ -99,8 +103,8 @@ class CategoryController extends Controller
     {
         foreach (json_decode(request()->record_ids) as $recordId) {
 
-            $category = Category::FindOrFail($recordId);
-            $this->delete($category);
+            $subCategory = Category::FindOrFail($recordId);
+            $this->delete($subCategory);
 
         }//end of for each
 
@@ -109,9 +113,9 @@ class CategoryController extends Controller
 
     }// end of bulkDelete
 
-    private function delete(Category $category)
+    private function delete(Category $subCategory)
     {
-        $category->delete();
+        $subCategory->delete();
 
     }// end of delete
 
